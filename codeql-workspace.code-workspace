@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": ".github/codeql",
+      "name": "CodeQL Queries"
+    }
+  ],
+  "settings": {
+    "codeQL.runningQueries.memory": 1024,
+    "codeQL.runningQueries.numberOfThreads": 2,
+    "codeQL.runningTests.numberOfThreads": 2,
+    "codeQL.telemetry.enableTelemetry": false
+  },
+  "extensions": {
+    "recommendations": [
+      "github.vscode-codeql"
+    ]
+  }
+}

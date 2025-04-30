@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Demos - Globomantics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <%- include('partials/nav') %>
+    <main class="max-w-3xl mx-auto mt-12 p-8 bg-white rounded shadow">
+      <h1 class="text-3xl font-bold mb-4">Security Demos</h1>
+      <ul class="list-disc ml-8">
+        <li><a href="/demo/xss?input=%3Cscript%3Ealert('xss')%3C%2Fscript%3E" class="text-blue-700 underline">XSS Demo</a></li>
+        <li><a href="/demo/sql-injection?user=admin'--" class="text-blue-700 underline">SQL Injection Demo</a></li>
+        <li><a href="/demo/file-upload" class="text-blue-700 underline">Insecure File Upload Demo</a></li>
+        <li><a href="/demo/jwt" class="text-blue-700 underline">Weak JWT Secret Demo</a></li>
+      </ul>
+      <p class="mt-6 text-sm text-gray-600">These endpoints are intentionally vulnerable for security training. Do not use in production!</p>
+    </main>
+  </body>
+</html>

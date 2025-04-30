@@ -106,12 +106,32 @@ npm test
 
 ### CodeQL Analysis
 
+This repository is configured with enhanced CodeQL analysis capabilities for any client application:
+
 ```bash
-# Initialize CodeQL
+# Standard CodeQL Analysis
+npm run codeql
+
+# Custom CodeQL Analysis with extended security queries
+npm run codeql:custom
+```
+
+The analysis will generate SARIF files that can be uploaded to GitHub or viewed with SARIF viewers:
+
+- `codeql-results.sarif` - Standard analysis results
+- `codeql-custom-results.sarif` - Custom analysis with extended security queries
+
+#### Manual CodeQL Commands
+
+```bash
+# Create a CodeQL database
 codeql database create db --language=javascript
 
-# Run analysis
-codeql database analyze db javascript-security-and-quality.ql --format=sarif-latest
+# Run analysis with standard queries
+codeql database analyze db --format=sarif-latest --output=./codeql-results.sarif
+
+# Run analysis with custom query suite
+codeql database analyze db ./.github/codeql/javascript-custom-queries.qls --format=sarif-latest --output=./codeql-custom-results.sarif
 ```
 
 ## 📝 Course Exercises

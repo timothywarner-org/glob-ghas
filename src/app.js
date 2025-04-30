@@ -13,6 +13,13 @@ process.on('uncaughtException', (err) => {
 
 const app = express();
 
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+
+// Serve static files (if any) from /public
+app.use(express.static(__dirname + '/public'));
+
 // Unsafe JSON parsing with no size limit
 app.use(express.json({ limit: '50mb' }));
 
@@ -46,7 +53,23 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
+// Business website routes
+app.get('/', (req, res) => res.render('home'));
+app.get('/about', (req, res) => res.render('about'));
+app.get('/products', (req, res) => res.render('products'));
+app.get('/contact', (req, res) => res.render('contact'));
+app.get('/security-demos', (req, res) => res.render('security-demos'));
+
+// 404 handler for unknown pages
+app.use((req, res, next) => {
+  if (req.accepts('html')) {
+    res.status(404).render('404');
+  } else {
+    next();
+  }
+});
+
+// API routes
 app.use('/api/github', apiKeyMiddleware, githubRoutes);
 app.use('/api/reviews', apiKeyMiddleware, reviewRoutes);
 

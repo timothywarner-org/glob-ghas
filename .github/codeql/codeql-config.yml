@@ -1,0 +1,26 @@
+name: "Custom CodeQL Configuration"
+
+queries:
+  - uses: security-and-quality
+  - uses: security-extended
+
+query-filters:
+  - exclude:
+      id: js/unused-local-variable
+
+paths-ignore:
+  - 'node_modules'
+  - 'dist'
+  - 'build'
+  - '**/*.test.js'
+  - '**/*.spec.js'
+  - 'test'
+  - 'tests'
+
+paths:
+  - src
+
+database:
+  analyze-javascript-builtin-frameworks: true
+  analyze-javascript-dependencies: true
+  javascript-extraction-mode: full

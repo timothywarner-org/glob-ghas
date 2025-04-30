@@ -1,0 +1,38 @@
+# Custom CodeQL query suite for JavaScript applications
+
+# Import the standard JavaScript security queries
+- import: codeql-suites/javascript-security-and-quality.qls
+  from: codeql-javascript
+
+# Import additional security queries
+- import: codeql-suites/javascript-security-extended.qls
+  from: codeql-javascript
+
+# Add custom queries for common web application vulnerabilities
+- queries: .
+  from: codeql-javascript
+  include:
+    # XSS vulnerabilities
+    - js/xss
+    # SQL injection
+    - js/sql-injection
+    # Path injection
+    - js/path-injection
+    # Command injection
+    - js/command-line-injection
+    # Prototype pollution
+    - js/prototype-pollution
+    # Insecure randomness
+    - js/insecure-randomness
+    # Hardcoded credentials
+    - js/hardcoded-credentials
+    # Insecure dependencies
+    - js/insecure-dependency
+    # JWT vulnerabilities
+    - js/jwt-missing-verification
+    # Regex DOS
+    - js/regex-injection
+    # Insecure deserialization
+    - js/unsafe-deserialization
+    # CSRF vulnerabilities
+    - js/missing-token-validation

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Globomantics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <%- include('partials/nav') %>
+    <main class="max-w-3xl mx-auto mt-12 p-8 bg-white rounded shadow">
+      <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
+      <form action="/contact" method="POST" class="space-y-4">
+        <div>
+          <label for="name" class="block">Name:</label>
+          <input type="text" id="name" name="name" class="border p-2 w-full">
+        </div>
+        <div>
+          <label for="email" class="block">Email:</label>
+          <input type="email" id="email" name="email" class="border p-2 w-full">
+        </div>
+        <div>
+          <label for="message" class="block">Message:</label>
+          <textarea id="message" name="message" class="border p-2 w-full"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-800 text-white px-4 py-2 rounded">Send</button>
+      </form>
+    </main>
+  </body>
+</html>
