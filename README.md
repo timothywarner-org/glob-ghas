@@ -1,10 +1,10 @@
-# Globomantics Code Review Assistant
+# Globomantics Code Review Assistant 
 
 A deliberately vulnerable application for teaching GitHub Advanced Security (GHAS) and CodeQL analysis.
 
 ## 🎓 Course Overview
 
-This repository is designed as a hands-on learning environment for understanding:
+This repo is designed as a hands-on learning environment for understanding:
 
 - CodeQL analysis
 - Security vulnerabilities in Node.js applications
