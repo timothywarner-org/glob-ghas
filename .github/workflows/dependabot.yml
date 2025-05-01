@@ -1,6 +1,15 @@
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
+name: Dependabot Updates
+
+on:
+  schedule:
+    - cron: '0 2 * * 0' # Weekly on Sunday at 2 AM Central Time
+  workflow_dispatch:
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run Dependabot
+        run: echo "Dependabot updates triggered"

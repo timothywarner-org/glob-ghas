@@ -1,30 +1,39 @@
-name: Build CodeQL Database
+name: Build CodeQL Database and Genrate SARIF Report
 
 on:
   push:
     branches: [main]
 
 jobs:
-  build-codeql-db:
+  analyze:
+    name: Analyze JavaScript Code
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: javascript
-          db-location: codeql-db
+          db-location: globo-web-db
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+        with:
+          output: results.sarif
+          upload: true
 
       - name: Upload CodeQL Database
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: codeql-database
-          path: codeql-db
+          name: globo-web-db
+          path: globo-web-db
