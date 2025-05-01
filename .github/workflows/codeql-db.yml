@@ -1,0 +1,30 @@
+name: Build CodeQL Database
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-codeql-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+          db-location: codeql-db
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: Upload CodeQL Database
+        uses: actions/upload-artifact@v3
+        with:
+          name: codeql-database
+          path: codeql-db
